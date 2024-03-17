@@ -17,10 +17,19 @@ class TreeNode:
             p = p.parent
         return level
     
+    def print_indent(self):
+        indent = '|'
+        if self.get_level() == 1:
+            return indent
+        for level in range(self.get_level()-1):
+            indent += '|' + ' ' * 3
+        return indent
+    
     def print_tree(self):
-        spaces = ' ' * self.get_level()
-        
-        print(spaces + self.data)
+        preifx = self.print_indent()
+        if self.parent:
+            preifx += "|___"
+        print(preifx + self.data)
         if self.children:
             for child in self.children:
                 child.print_tree()
@@ -39,7 +48,12 @@ def build_product_tree():
     cellphone.add_child(TreeNode(data="Vivo"))
     
     tv = TreeNode(data="TV")
-    tv.add_child(TreeNode(data="Samsung"))
+    samsung = TreeNode(data="Samsung")
+    oled = TreeNode(data="OLED")
+    inch = TreeNode(data="65 INCH")
+    samsung.add_child(child=oled)
+    oled.add_child(child=inch)
+    tv.add_child(samsung)
     tv.add_child(TreeNode(data="LG"))
     
     root.add_child(laptop)
@@ -47,4 +61,9 @@ def build_product_tree():
     root.add_child(tv)
     
     return root
+    
+if __name__ == '__main__':
+    root = build_product_tree()
+    root.print_tree()
+    
     

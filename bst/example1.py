@@ -9,6 +9,26 @@ class BinarySearchTreeNode:
             return
         
         if self.data > child:
-            self.left = child
+            if self.left:
+                self.left.add_child(child)
+            else:
+                self.left = BinarySearchTreeNode(data=child)
         else:
-            self.right = child
+            if self.right:
+                self.right.add_child(child)
+            else:
+                self.right = BinarySearchTreeNode(child)
+                
+    def in_order_traversel(self):
+        elements = []
+        
+        if self.left:
+            elements += self.in_order_traversel()
+        
+        elements.append(self.data)
+        
+        if self.right:
+            elements += self.in_order_traversel()
+        
+        return elements
+            

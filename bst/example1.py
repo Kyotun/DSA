@@ -68,7 +68,7 @@ class BinarySearchTreeNode:
             else:
                 return False
     
-    def delete(self, val):
+    def delete_right_min(self, val):
         if val < self.data:
             if self.left:
                 self.left = self.left.delete(val)
@@ -88,8 +88,27 @@ class BinarySearchTreeNode:
             self.right = self.right.delete(min_val)
 
         return self
-            
-                
+    
+    def delete_left_max(self, val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete(val)
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete(val)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            elif self.left is None:
+                return self.right
+            elif self.right is None:
+                return self.left
+
+            max_val = self.left.find_max()
+            self.data = max_val
+            self.left = self.left.delete(max_val)
+
+        return self
     
     def find_min(self):
         if self.left:

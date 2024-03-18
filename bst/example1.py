@@ -4,7 +4,7 @@ class BinarySearchTreeNode:
         self.left = None
         self.right = None
         
-    def add_child(self, child:int):
+    def add_child(self, child):
         if self.data == child:
             return
         
@@ -69,29 +69,34 @@ class BinarySearchTreeNode:
                 return False
     
     def delete(self, val):
-        if self.data == val:
+        if val < self.data:
             if self.left:
-                self.data = self.right.find_max()
-            elif self.right:
-                self.data = self.right.find_min()
-            else:
-                return None
-        
-        elif val < self.data:
-            if self.left:
-                self.left = self.left.delete(val=val)
+                self.left = self.left.delete(val)
         elif val > self.data:
             if self.right:
-                self.right = self.right.delete(val=val)
+                self.right = self.right.delete(val)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            elif self.left is None:
+                return self.right
+            elif self.right is None:
+                return self.left
+
+            min_val = self.right.find_min()
+            self.data = min_val
+            self.right = self.right.delete(min_val)
+
+        return self
             
                 
     
-    def find_min(self) -> int:
+    def find_min(self):
         if self.left:
             return self.left.find_min()
         return self.data
     
-    def find_max(self) -> int:
+    def find_max(self):
         if self.right:
             return self.right.find_max()
         return self.data
@@ -119,11 +124,6 @@ def build_tree(elements):
     return root
 
 if __name__ == '__main__':
-    # countries = ["India","Pakistan","Germany", "USA","China","India","UK","USA"]
-    # country_tree = build_tree(countries)
-
-    # print("UK is in the list? ", country_tree.search("UK"))
-    # print("Sweden is in the list? ", country_tree.search("Sweden"))
 
     numbers_tree = build_tree([17, 4, 1, 20, 9, 23, 18, 34])
     print("In order traversal gives this sorted list:",numbers_tree.in_order_traversal())

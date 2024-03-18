@@ -124,12 +124,17 @@ def build_tree(elements):
     return root
 
 if __name__ == '__main__':
+    numbers_tree = build_tree([17, 4, 1, 20, 9, 23, 18, 34])
+    print("Tree: ", numbers_tree.in_order_traversal())
+    
+    numbers_tree.delete(20)
+    print("After deleting 20: ",numbers_tree.in_order_traversal()) # this should print [1, 4, 9, 17, 18, 23, 34]
 
     numbers_tree = build_tree([17, 4, 1, 20, 9, 23, 18, 34])
-    print("In order traversal gives this sorted list:",numbers_tree.in_order_traversal())
-    print(numbers_tree.find_min())
-    print(numbers_tree.find_max())
-    print(numbers_tree.calculate_sum())
-    print(numbers_tree.post_order_traversal())
-    print(numbers_tree.pre_order_traversal())
+    numbers_tree.delete(9)
+    print("After deleting 9: ",numbers_tree.in_order_traversal())  # this should print [1, 4, 17, 18, 20, 23, 34]
+
+    numbers_tree = build_tree([17, 4, 1, 20, 9, 23, 18, 34])
+    numbers_tree.delete(17)
+    print("After deleting 17: ",numbers_tree.in_order_traversal())  # this should print [1, 4, 9, 18, 20, 23, 34]
             

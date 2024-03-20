@@ -31,6 +31,30 @@ def binary_search(number_list, target):
     raise Exception("Value cannot be found in the given data.")
 
 @time_it
+def find_all_occurances(number_list, target):
+    index = binary_search(numbers_list, number_to_find)
+    indices = [index]
+    # find indices on left hand side
+    i = index-1
+    while i >=0:
+        if numbers_list[i] == number_to_find:
+            indices.append(i)
+        else:
+            break
+        i = i - 1
+
+    # find indices on right hand side
+    i = index + 1
+    while i<len(numbers_list):
+        if numbers_list[i] == number_to_find:
+            indices.append(i)
+        else:
+            break
+        i = i + 1
+
+    return sorted(indices)
+
+@time_it
 def binary_search_recursive(number_list, target, left_index, right_index):
     if right_index < left_index:
         raise Exception("Value cannot be found in the given data.")
@@ -54,8 +78,10 @@ def binary_search_recursive(number_list, target, left_index, right_index):
     
 
 if __name__ == '__main__':
-    numbers_list = [i for i in range(1000001)]
-    number_to_find = 1000000
+    numbers_list = [1,4,6,9,11,15,15,15,17,21,34,34,56]
+    number_to_find = 15  
+    
+    print(find_all_occurances(numbers_list, number_to_find))
 
     index = linear_search(numbers_list, number_to_find)
     index = linear_search_2(numbers_list, number_to_find)

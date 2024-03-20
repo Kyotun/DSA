@@ -4,6 +4,12 @@ def linear_search(numbers_list, target):
             return numbers_list.index(number)
     return -1
 
+def linear_search_2(number_list, target):
+    for index, element in enumerate(number_list):
+        if element == target:
+            return index
+    raise Exception("Value cannot be found in given list.")
+
 def binary_search(numbers_list, target):
     index = 0
     k = 2
@@ -20,13 +26,18 @@ def binary_search(numbers_list, target):
         k *= 2
     return -1
 
+def binary_search_2(number_list, target):
+    pass
+
 if __name__ == '__main__':
     numbers_list = [12, 15, 17, 19, 21, 24, 45, 67]
     number_to_find = 19
 
     index = binary_search(numbers_list, number_to_find)
-    print(f"Number found at index {index} using binary search")
+    print(f"Number found at index {index} using binary search.")
 
     index = linear_search(numbers_list, number_to_find)
-    print(f"Number found at index {index} using linear search")
+    print(f"Number found at index {index} using linear search.")
 
+    index = linear_search_2(number_list=numbers_list, target=number_to_find)
+    print(f"Number found at index {index} using linear search 2.")

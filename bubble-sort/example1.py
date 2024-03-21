@@ -1,25 +1,19 @@
-def bubble_sort(elements):
+def bubble_sort(elements, key=None):
     for i in range(len(elements)-1):
         swapped = False
         for j in range(len(elements)-1-i):
-            if elements[j] > elements [j+1]:
-                temp = elements[j+1]
-                elements[j+1] = elements[j]
-                elements[j] = temp
-                swapped = True
-        if not swapped:
-            break
-    return elements
-
-def bubble_sort_transaction(elements):
-    for i in range(len(elements)-1):
-        swapped = False
-        for j in range(len(elements)-1-i):
-            if elements[j]['transaction_amount'] > elements [j+1]['transaction_amount']:
-                temp = elements[j+1]
-                elements[j+1] = elements[j]
-                elements[j] = temp
-                swapped = True
+            if key:
+                if elements[j][key] > elements [j+1][key]:
+                    temp = elements[j+1]
+                    elements[j+1] = elements[j]
+                    elements[j] = temp
+                    swapped = True
+            else:
+                if elements[j] > elements [j+1]:
+                    temp = elements[j+1]
+                    elements[j+1] = elements[j]
+                    elements[j] = temp
+                    swapped = True
         if not swapped:
             break
     return elements
@@ -37,4 +31,5 @@ if __name__ == '__main__':
         { 'name': 'kathy',  'transaction_amount': 200,  'device': 'vivo'},
         { 'name': 'aamir',  'transaction_amount': 800,  'device': 'iphone-8'},
     ]
-    print(bubble_sort_transaction(elements_3))
+    print(bubble_sort(elements_3, key="transaction_amount"))
+    print(bubble_sort(elements))

@@ -46,11 +46,12 @@ def quick_sort_lomuto(elements, start, end):
         return
     if start < end:
         pi = partition_lomuto(elements, start, end)
-        quick_sort_lomuto(elements, start, pi-1)
-        quick_sort_lomuto(elements, pi+1, end)
+        elements = quick_sort_lomuto(elements, start, pi-1)
+        elements = quick_sort_lomuto(elements, pi+1, end)
     return elements
 
 if __name__ == '__main__':
+    
     tests = [
         [11,9,29,7,2,15,28],
         [3, 7, 9, 11],

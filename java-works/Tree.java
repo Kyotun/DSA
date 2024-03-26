@@ -26,4 +26,18 @@ public class Tree {
             }
         }
     }
+
+    public void printInorder() {
+        if(root == null) return;
+        privatePrintInorder(root);
+        System.out.println();
+    }
+
+    public void privatePrintInorder(TreeNode mn) {
+        if(mn == null) return;
+
+        privatePrintInorder(mn.left);
+        System.out.println(mn.value + " ");
+        privatePrintInorder(mn.right);
+    }
 }

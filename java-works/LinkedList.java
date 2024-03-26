@@ -29,7 +29,7 @@ public class LinkedList {
     }
 
     public int get(int index) throws BadIndexFormatException {
-        ListNode temp = head;
+        ListNode temp = this.head;
         int count = 0;
         while(count < index && temp != null){
             temp = temp.next;
@@ -43,7 +43,7 @@ public class LinkedList {
     }
 
     public void remove(int index) throws BadIndexFormatException{
-        ListNode temp = head;
+        ListNode temp = this.head;
         int count = 0;
         while(count < index-1 && temp != null){
             temp = temp.next;
@@ -55,5 +55,14 @@ public class LinkedList {
         } else {
             throw new BadIndexFormatException("Please give a reachable index to get the value of the given index.");
         }
+    }
+
+    public void print() {
+        ListNode temp = this.head;
+        while (temp != null) {
+            System.out.println(temp.value + ", ");
+            temp = temp.next;
+        }
+        System.out.println();
     }
 }

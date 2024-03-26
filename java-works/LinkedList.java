@@ -1,3 +1,5 @@
+import jdk.internal.classfile.components.ClassPrinter;
+
 public class LinkedList {
     ListNode head = null;
 
@@ -64,5 +66,16 @@ public class LinkedList {
             temp = temp.next;
         }
         System.out.println();
+    }
+
+    public void addLast(int value) {
+        ListNode temp = this.head;
+        while(temp.next != null) {
+            temp = temp,next;
+        }
+        ListNode mn = new ListNode();
+        mn.value = value;
+        mn.next = temp.next;
+        temp.next = mn;
     }
 }

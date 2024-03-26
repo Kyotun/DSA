@@ -41,4 +41,19 @@ public class LinkedList {
             throw new BadIndexFormatException("Please give a reachable index to get the value of the given index.");
         }
     }
+
+    public void remove(int index) throws BadIndexFormatException{
+        ListNode temp = head;
+        int count = 0;
+        while(count < index-1 && temp != null){
+            temp = temp.next;
+            count++;
+        }
+        if (temp != null){
+            ListNode node_to_remove = temp.next;
+            temp.next = node_to_remove.next;
+        } else {
+            throw new BadIndexFormatException("Please give a reachable index to get the value of the given index.");
+        }
+    }
 }

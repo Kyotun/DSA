@@ -27,4 +27,18 @@ public class LinkedList {
             }
         }
     }
+
+    public int get(int index) throws BadIndexFormatException {
+        ListNode temp = head;
+        int count = 0;
+        while(count < index && temp != null){
+            temp = temp.next;
+            count++;
+        }
+        if (temp != null){
+            return temp.value;
+        } else {
+            throw new BadIndexFormatException("Please give a reachable index to get the value of the given index.");
+        }
+    }
 }

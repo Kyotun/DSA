@@ -1,7 +1,7 @@
 public class LinkedList {
     ListNode head = null;
 
-    public void add(int value, int index) {
+    public void add(int value, int index) throws BadIndexFormatException{
         if (head == null) {
             this.head = new ListNode();
             this.head.value = value;
@@ -23,7 +23,7 @@ public class LinkedList {
                 ml.next = temp.next;
                 temp.next = ml;
             } else {
-                System.out.println("Index is out of range.");
+                throw new BadIndexFormatException("Please give a reachable index to set the given value.");
             }
         }
     }

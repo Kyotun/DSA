@@ -1,5 +1,3 @@
-import jdk.internal.classfile.components.ClassPrinter;
-
 public class LinkedList {
     ListNode head = null;
 

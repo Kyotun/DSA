@@ -1,5 +1,5 @@
-class Map{
-    
+public class Map {
+
     String[] values = new String[10000];
 
     public void add(int key, String value){

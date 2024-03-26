@@ -1,4 +1,4 @@
-public class BadIndexFormatException extends Exception{
+public class BadIndexFormatException extends Exception {
     private String message;
 
     public BadIndexFormatException(String msg){

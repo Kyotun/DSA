@@ -78,4 +78,11 @@ public class LinkedList {
         mn.next = temp.next;
         temp.next = mn;
     }
+
+    public void addFirst(int value) {
+        ListNode mn = new ListNode();
+        mn.value = value;
+        mn.next = this.head;
+        this.head = mn;
+    }
 }

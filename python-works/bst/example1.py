@@ -84,7 +84,7 @@ class BinarySearchTreeNode:
 
             min_val = self.right.find_min()
             self.data = min_val
-            self.right = self.right.delete(min_val)
+            self.right = self.right.delete_right_min(min_val)
 
         return self
 
@@ -105,7 +105,7 @@ class BinarySearchTreeNode:
 
             max_val = self.left.find_max()
             self.data = max_val
-            self.left = self.left.delete(max_val)
+            self.left = self.left.delete_left_max(max_val)
 
         return self
 

@@ -65,8 +65,8 @@ if __name__ == '__main__':
         [],
         [6]
     ]
-    for elements in tests:
-        print(f'unsorted array: {elements}')
-        elements = quick_sort_lomuto(elements, 0, len(elements) - 1)
-        print(f'sorted array: {elements}')
+    for test in tests:
+        print(f'unsorted array: {test}')
+        test = quick_sort_lomuto(test, 0, len(test) - 1)
+        print(f'sorted array: {test}')
         print("")
